@@ -47,7 +47,7 @@ El sistema va a descargar todos los paquetes necesarios, y luego de un tiempo el
 
 El siguiente paso consiste en seleccionar nuestro environment personalizado como predeterminado, esto hará que Anaconda utilice esta configuración al abrirse. Para esto vamos al menú `File > Preferences` y luego elegimos el entorno que acabamos de crear en la opción de `Default conda environment`, como se muestra en la siguiente figura:
 
-![Set default environment](assets/conda-default-environment.png)
+![Elegir environment por defecto](assets/conda-default-environment.png)
 
 Confirmamos los cambios y con esto estamos listos para instalar el toolbox.
 
@@ -55,7 +55,7 @@ Confirmamos los cambios y con esto estamos listos para instalar el toolbox.
 
 Para instalar el toolbox de robótica tenemos que acceder a un terminal del sistema específico para nuestro environment. Esto se logra yendo al menú de environments, y dando click en el botón verde a la derecha de la opción que deseemos utilizar, y luego en la opción `Open Terminal`, como se muestra en la figura:
 
-![Open environment termina](assets/conda-open-terminal.png)
+![Abrir terminal para el entorno](assets/conda-open-terminal.png)
 
 Esto nos llevará a un terminal CMD de Windows cuyo prompt tendrá la particularidad de estar precedido por el nombre de nuestro environment entre paréntesis. Esto quiere decir que cualquier cambio que hagamos en la instalación de Python actualmente activa, se hará en dicho environment y no a nivel de sistema.
 
@@ -92,7 +92,7 @@ JupyterLab provee un entorno de desarrollo interactivo para la creación, ejecuc
 
 A primera vista, JupyerLab ofrece una interfaz similar a la de un IDE más tradicional. Con menúes contextuales en la parte superior, una barra de navegación en la parte izquierda, y un editor de texto en la parte central derecha.
 
-![alt text](assets/jupyter-lab-gui.png)
+![Pantalla principal JupyterLab](assets/jupyter-lab-gui.png)
 
 Procedemos con lo siguiente:
 1. Hacemos click en el ícono de la carpeta señalada en la figura de arriba (flecha 1), lo que nos llevará al directorio raíz de nuestro usuario. Típicamente: `C:\Users\<Nombre de usuario>\`
@@ -104,7 +104,7 @@ Procedemos con lo siguiente:
 
 Si todo salió bien, en este momento deberíamos tener nuestro notebook correctamente nombrado, guardado en la ubicación `C:\Users\<Nombre de usuario>\robotica-fpuna\lab_1\lab_1.ipynb`, y debería verse similar a la imagen siguiente:
 
-![Jupyter Notebook Lab1](assets/jupyter-lab-lab1.png)
+![Notebook para laboratorio 1](assets/jupyter-lab-lab1.png)
 
 ### Ejemplo básico de uso.
 

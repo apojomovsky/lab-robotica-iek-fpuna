@@ -121,30 +121,41 @@ print(robot) # 3
 2. Se importa el robot manipulador llamado Panda, uno de los robots de ejemplo incluidos en la base de datos del toolbox.
 3. Como último paso, se procede a imprimir la configuración de dicho robot en forma tabular con todos los detalles morfológicos del mismo.
 
+<div style="page-break-after: always;"></div>
+
 Procedemos a ejecutar la celda haciendo `Ctrl + Enter`. A continuación, deberíamos ver el siguiente resultado:
 
 ```shell
-	ERobot: panda (by Franka Emika), 7 joints (RRRRRRR), 1 gripper, geometry, collision
-	┌─────┬──────────────┬───────┬─────────────┬────────────────────────────────────────────────┐
-	│link │     link     │ joint │   parent    │              ETS: parent to link               │
-	├─────┼──────────────┼───────┼─────────────┼────────────────────────────────────────────────┤
-	│   0 │ panda_link0  │       │ BASE        │                                                │
-	│   1 │ panda_link1  │     0 │ panda_link0 │ SE3(0, 0, 0.333) ⊕ Rz(q0)                      │
-	│   2 │ panda_link2  │     1 │ panda_link1 │ SE3(-90°, -0°, 0°) ⊕ Rz(q1)                    │
-	│   3 │ panda_link3  │     2 │ panda_link2 │ SE3(0, -0.316, 0; 90°, -0°, 0°) ⊕ Rz(q2)       │
-	│   4 │ panda_link4  │     3 │ panda_link3 │ SE3(0.0825, 0, 0; 90°, -0°, 0°) ⊕ Rz(q3)       │
-	│   5 │ panda_link5  │     4 │ panda_link4 │ SE3(-0.0825, 0.384, 0; -90°, -0°, 0°) ⊕ Rz(q4) │
-	│   6 │ panda_link6  │     5 │ panda_link5 │ SE3(90°, -0°, 0°) ⊕ Rz(q5)                     │
-	│   7 │ panda_link7  │     6 │ panda_link6 │ SE3(0.088, 0, 0; 90°, -0°, 0°) ⊕ Rz(q6)        │
-	│   8 │ @panda_link8 │       │ panda_link7 │ SE3(0, 0, 0.107)                               │
-	└─────┴──────────────┴───────┴─────────────┴────────────────────────────────────────────────┘
+ERobot: panda (by Franka Emika), 7 joints (RRRRRRR), 1 gripper, geometry, collision
+┌────┬────────────┬─────┬───────────┬──────────────────────────────────────────────┐
+│link│    link    │joint│  parent   │             ETS: parent to link              │
+├────┼────────────┼─────┼───────────┼──────────────────────────────────────────────┤
+│  0 │panda_link0 │     │BASE       │                                              │
+│  1 │panda_link1 │    0│panda_link0│SE3(0, 0, 0.333) ⊕ Rz(q0)                     │
+│  2 │panda_link2 │    1│panda_link1│SE3(-90°, -0°, 0°) ⊕ Rz(q1)                   │
+│  3 │panda_link3 │    2│panda_link2│SE3(0, -0.316, 0; 90°, -0°, 0°) ⊕ Rz(q2)      │
+│  4 │panda_link4 │    3│panda_link3│SE3(0.0825, 0, 0; 90°, -0°, 0°) ⊕ Rz(q3)      │
+│  5 │panda_link5 │    4│panda_link4│SE3(-0.0825, 0.384, 0; -90°, -0°, 0°) ⊕ Rz(q4)│
+│  6 │panda_link6 │    5│panda_link5│SE3(90°, -0°, 0°) ⊕ Rz(q5)                    │
+│  7 │panda_link7 │    6│panda_link6│SE3(0.088, 0, 0; 90°, -0°, 0°) ⊕ Rz(q6)       │
+│  8 │@panda_link8│     │panda_link7│SE3(0, 0, 0.107)                              │
+└────┴────────────┴─────┴───────────┴──────────────────────────────────────────────┘
 
-	┌─────┬─────┬────────┬─────┬───────┬─────┬───────┬──────┐
-	│name │ q0  │ q1     │ q2  │ q3    │ q4  │ q5    │ q6   │
-	├─────┼─────┼────────┼─────┼───────┼─────┼───────┼──────┤
-	│  qr │  0° │ -17.2° │  0° │ -126° │  0° │  115° │  45° │
-	│  qz │  0° │  0°    │  0° │  0°   │  0° │  0°   │  0°  │
-	└─────┴─────┴────────┴─────┴───────┴─────┴───────┴──────┘
+┌─────┬─────┬────────┬─────┬───────┬─────┬───────┬──────┐
+│name │ q0  │ q1     │ q2  │ q3    │ q4  │ q5    │ q6   │
+├─────┼─────┼────────┼─────┼───────┼─────┼───────┼──────┤
+│  qr │  0° │ -17.2° │  0° │ -126° │  0° │  115° │  45° │
+│  qz │  0° │  0°    │  0° │  0°   │  0° │  0°   │  0°  │
+└─────┴─────┴────────┴─────┴───────┴─────┴───────┴──────┘
 ```
 
-Con esto terminamos la primera práctica de laboratorio de robótica. Se espera que con esto cada alumno tenga un entorno de trabajo completamente configurado y funcional, además de un flujo de trabajo sugerido para ésta y el resto de las prácticas a realizarse a lo largo de la materia. Para cualquier consulta o comentario, por favor referirse al grupo de Whatsapp de la materia.
+La descripción se divide en dos partes principales: la configuración de los eslabones y las articulaciones del robot en el árbol de cuerpo rígido, y luego se muestran además dos configuraciones predefinidas de las articulaciones para dos posturas de ejemplo.
+
+Con esto termina la primera práctica de laboratorio de robótica. Se espera que con esto se haya logrado que:
+
+- Cada alumno tenga un entorno completamente configurado y funcional.
+- Se tenga un flujo de trabajo sugerido para el resto de las prácticas a realizarse a lo largo de la materia.
+
+Vamos a ir profundizando más en el uso de la herramienta en las siguientes prácticas.
+
+Para cualquier consulta o comentario, por favor referirse al grupo de Whatsapp de la materia.

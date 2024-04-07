@@ -59,19 +59,19 @@ Para instalar el toolbox de robótica tenemos que acceder a un terminal del sist
 
 Esto nos llevará a un terminal CMD de Windows cuyo prompt tendrá la particularidad de estar precedido por el nombre de nuestro environment entre paréntesis. Esto quiere decir que cualquier cambio que hagamos en la instalación de Python actualmente activa, se hará en dicho environment y no a nivel de sistema.
 
-```
+```shell
 (robotica) PS C:\Users\apojo>
 ```
 
 Procedemos a instalar el toolbox con el siguiente comando:
 
-```
+```shell
 pip install roboticstoolbox-python
 ```
 
 Este paso podría tomar un tiempo dependiendo de la velocidad de tu conexión a internet. Una vez finalizado, se debería mostrar un mensaje similar al siguiente, para luego retornar al prompt inicial:
 
-```
+```shell
 Installing collected packages: rtb-data, progress, distlib, colored, websockets, virtualenv, nodeenv, identify, cfgv, ansitable, pre-commit, spatialmath-python, spatialgeometry, pgraph-python, swift-sim, roboticstoolbox-python
 Successfully installed ansitable-0.9.10 cfgv-3.4.0 colored-1.4.4 distlib-0.3.8 identify-2.5.35 nodeenv-1.8.0 pgraph-python-0.6.2 pre-commit-3.7.0 progress-1.6 roboticstoolbox-python-1.1.0 rtb-data-1.0.1 spatialgeometry-1.1.0 spatialmath-python-1.1.9 swift-sim-1.1.0 virtualenv-20.25.1 websockets-12.0
 
@@ -84,7 +84,7 @@ Ya estamos listos para correr nuestro primer ejemplo en JupyterLab.
 
 Vamos al menú `Home` de Anaconda Navigator, y buscamos entre las aplicaciones el ícono de JupyterLab. Procedemos a instalarlo. Una vez instalado, el botón que previamente decía `Install` ahora dirá `Launch`. Procedemos a lanzarlo. Esto debería abrir nuestro navegador web predeterminado y redireccionarnos a la aplicación.
 
-![JupyerLab](assets/install-jupyter-lab.png)
+![Instalar JupyerLab](assets/install-jupyter-lab.png)
 
 JupyterLab provee un entorno de desarrollo interactivo para la creación, ejecución y depuración de Jupyter Notebooks. La herramienta nos permite además gestionar directorios y archivos en general, por lo que nos permitirá, entre otras cosas, visualizar las animaciones GIF generadas por el toolbox directamente desde su interfaz, sin necesidad de abrir un visualizador externo.
 
@@ -111,7 +111,7 @@ Si todo salió bien, en este momento deberíamos tener nuestro notebook correcta
 El siguiente ejemplo es una versión simplificada del que ofrece Peter Corke en el repositorio oficial del toolbox<sup>[3](https://github.com/petercorke/robotics-toolbox-python?tab=readme-ov-file#code-examples)</sup>.
  Para esto procedemos a crear las siguientes celdas en nuestro notebook para el lab1:
 
- ```
+ ```python
 import roboticstoolbox as rtb # 1
 robot = rtb.models.Panda() # 2
 print(robot) # 3
@@ -123,7 +123,7 @@ print(robot) # 3
 
 Procedemos a ejecutar la celda haciendo `Ctrl + Enter`. A continuación, deberíamos ver el siguiente resultado:
 
-```
+```shell
 	ERobot: panda (by Franka Emika), 7 joints (RRRRRRR), 1 gripper, geometry, collision
 	┌─────┬──────────────┬───────┬─────────────┬────────────────────────────────────────────────┐
 	│link │     link     │ joint │   parent    │              ETS: parent to link               │

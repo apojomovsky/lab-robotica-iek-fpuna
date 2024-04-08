@@ -109,7 +109,9 @@ Si todo salió bien, en este momento deberíamos tener nuestro notebook correcta
 ### Ejemplo básico de uso.
 
 El siguiente ejemplo es una versión simplificada del que ofrece Peter Corke en el repositorio oficial del toolbox<sup>[3](https://github.com/petercorke/robotics-toolbox-python?tab=readme-ov-file#code-examples)</sup>.
- Para esto procedemos a crear las siguientes celdas en nuestro notebook para el lab1:
+Los bloques de código que se conforman un Jupyter Notebook se llaman celdas. Entre las varias ventajas que tienen los notebooks versus un script de Python, tenemos que estas celdasd se pueden ejecutar una a una y por separado. Esto facilita el proceso de creación y depuración del código.
+
+Para este ejemplo vamos a utilizar solo una celda y en la misma procedemos a agregar el siguiente código:
 
  ```python
 import roboticstoolbox as rtb # 1

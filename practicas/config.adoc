@@ -1,5 +1,6 @@
 :doctype: article
 :figure-caption: Imagen
+:imagesdir: assets
 :note-caption: NOTA
 :rouge-style: monokai
 :source-highlighter: rouge

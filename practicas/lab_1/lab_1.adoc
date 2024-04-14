@@ -1,5 +1,4 @@
 include::../config.adoc[]
-:imagesdir: assets
 
 = Práctica de Laboratorio N° 1
 

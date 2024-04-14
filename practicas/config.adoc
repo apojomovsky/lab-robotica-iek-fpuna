@@ -1,0 +1,6 @@
+:doctype: article
+:source-highlighter: rouge
+:rouge-style: monokai
+:note-caption: NOTA
+:toc: auto
+:toc-title: Tabla de contenidos

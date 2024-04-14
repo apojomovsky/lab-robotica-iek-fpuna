@@ -1,3 +1,7 @@
 {
-    "asciidoc.antora.enableAntoraSupport": true
+    "asciidoc.antora.enableAntoraSupport": true,
+    "asciidoc.pdf.asciidoctorPdfCommandArgs": [
+        "--theme",
+        "theme.yml"
+    ]
 }

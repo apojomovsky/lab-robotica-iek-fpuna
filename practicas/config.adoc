@@ -1,6 +1,7 @@
 :doctype: article
-:source-highlighter: rouge
-:rouge-style: monokai
+:figure-caption: Imagen
 :note-caption: NOTA
-:toc: auto
-:toc-title: Tabla de contenidos
+:rouge-style: monokai
+:source-highlighter: rouge
+// :toc-title: Tabla de contenidos
+// :toc: auto

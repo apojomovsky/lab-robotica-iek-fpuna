@@ -1,4 +1,5 @@
 include::../config.adoc[]
+:imagesdir: assets
 
 = Práctica de Laboratorio N° 1
 
@@ -37,7 +38,8 @@ Para un funcionamiento consistente del toolbox vamos a crear un nuevo entorno en
 
 Para crear un nuevo entorno en Anaconda, se presenta una captura comentada con los pasos:
 
-image::assets/conda-new-environment.png[Creación de un nuevo entorno en Anaconda]
+.Creación de un nuevo entorno en Anaconda
+image::conda-new-environment.png[align=center]
 
 1. Click en el menú de `Environments`.
 2. Click en el botón `create`, lo que abrirá un menú flotante
@@ -49,7 +51,8 @@ El sistema va a descargar todos los paquetes necesarios, y luego de un tiempo el
 
 El siguiente paso consiste en seleccionar nuestro environment personalizado como predeterminado, esto hará que Anaconda utilice esta configuración al abrirse. Para esto vamos al menú `File > Preferences` y luego elegimos el entorno que acabamos de crear en la opción de `Default conda environment`, como se muestra en la siguiente figura:
 
-image::assets/conda-default-environment.png[Elegir environment por defecto]
+.Elegir environment por defecto
+image::conda-default-environment.png[align=center]
 
 Confirmamos los cambios y con esto estamos listos para instalar el toolbox.
 
@@ -57,25 +60,23 @@ Confirmamos los cambios y con esto estamos listos para instalar el toolbox.
 
 Para instalar el toolbox de robótica tenemos que acceder a un terminal del sistema específico para nuestro environment. Esto se logra yendo al menú de environments, y dando click en el botón verde a la derecha de la opción que deseemos utilizar, y luego en la opción `Open Terminal`, como se muestra en la figura:
 
-image::assets/conda-open-terminal.png[Abrir terminal para el entorno]
+.Abrir terminal para el entorno
+image::conda-open-terminal.png[align=center]
 
 Esto nos llevará a un terminal CMD de Windows cuyo prompt tendrá la particularidad de estar precedido por el nombre de nuestro environment entre paréntesis. Esto quiere decir que cualquier cambio que hagamos en la instalación de Python actualmente activa, se hará en dicho environment y no a nivel de sistema.
 
-[,powershell]
 ----
 (robotica) PS C:\Users\apojo>
 ----
 
 Procedemos a instalar el toolbox con el siguiente comando:
 
-[,powershell]
 ----
 pip install roboticstoolbox-python
 ----
 
 Este paso podría tomar un tiempo dependiendo de la velocidad de tu conexión a internet. Una vez finalizado, se debería mostrar un mensaje similar al siguiente, para luego retornar al prompt inicial:
 
-[,powershell]
 ----
 Installing collected packages: rtb-data, progress, distlib, colored, websockets, virtualenv, nodeenv, identify, cfgv, ansitable, pre-commit, spatialmath-python, spatialgeometry, pgraph-python, swift-sim, roboticstoolbox-python
 Successfully installed ansitable-0.9.10 cfgv-3.4.0 colored-1.4.4 distlib-0.3.8 identify-2.5.35 nodeenv-1.8.0 pgraph-python-0.6.2 pre-commit-3.7.0 progress-1.6 roboticstoolbox-python-1.1.0 rtb-data-1.0.1 spatialgeometry-1.1.0 spatialmath-python-1.1.9 swift-sim-1.1.0 virtualenv-20.25.1 websockets-12.0
@@ -89,7 +90,8 @@ Ya estamos listos para correr nuestro primer ejemplo en JupyterLab.
 
 Vamos al menú `Home` de Anaconda Navigator, y buscamos entre las aplicaciones el ícono de JupyterLab. Procedemos a instalarlo. Una vez instalado, el botón que previamente decía `Install` ahora dirá `Launch`. Procedemos a lanzarlo. Esto debería abrir nuestro navegador web predeterminado y redireccionarnos a la aplicación.
 
-image::assets/install-jupyter-lab.png[Instalar JupyerLab]
+.Instalar JupyerLab
+image::install-jupyter-lab.png[align=center]
 
 JupyterLab provee un entorno de desarrollo interactivo para la creación, ejecución y depuración de Jupyter Notebooks. La herramienta nos permite además gestionar directorios y archivos en general, por lo que nos permitirá, entre otras cosas, visualizar las animaciones GIF generadas por el toolbox directamente desde su interfaz, sin necesidad de abrir un visualizador externo.
 
@@ -98,7 +100,8 @@ NOTE: Este será el entorno que usaremos de manera oficial para el desarrollo de
 
 A primera vista, JupyerLab ofrece una interfaz similar a la de un IDE más tradicional. Con menúes contextuales en la parte superior, una barra de navegación en la parte izquierda, y un editor de texto en la parte central derecha.
 
-image::assets/jupyter-lab-gui.png[Pantalla principal JupyterLab]
+.Pantalla principal JupyterLab
+image::jupyter-lab-gui.png[align=center]
 
 Procedemos con lo siguiente:
 
@@ -111,7 +114,8 @@ Procedemos con lo siguiente:
 
 Si todo salió bien, en este momento deberíamos tener nuestro notebook correctamente nombrado, guardado en la ubicación `C:\Users\<Nombre de usuario>\robotica-fpuna\lab_1\lab_1.ipynb`, y debería verse similar a la imagen siguiente:
 
-image::assets/jupyter-lab-lab1.png[Notebook para laboratorio 1]
+.Notebook para laboratorio 1
+image::jupyter-lab-lab1.png[align=center]
 
 == Ejemplo básico de uso.
 
@@ -133,29 +137,8 @@ print(robot) # 3
 
 Procedemos a ejecutar la celda haciendo `Ctrl + Enter`. A continuación, deberíamos ver el siguiente resultado:
 
-```powershell
-ERobot: panda (by Franka Emika), 7 joints (RRRRRRR), 1 gripper, geometry, collision
-┌────┬────────────┬─────┬───────────┬──────────────────────────────────────────────┐
-│link│    link    │joint│  parent   │             ETS: parent to link              │
-├────┼────────────┼─────┼───────────┼──────────────────────────────────────────────┤
-│  0 │panda_link0 │     │BASE       │                                              │
-│  1 │panda_link1 │    0│panda_link0│SE3(0, 0, 0.333) ⊕ Rz(q0)                     │
-│  2 │panda_link2 │    1│panda_link1│SE3(-90°, -0°, 0°) ⊕ Rz(q1)                   │
-│  3 │panda_link3 │    2│panda_link2│SE3(0, -0.316, 0; 90°, -0°, 0°) ⊕ Rz(q2)      │
-│  4 │panda_link4 │    3│panda_link3│SE3(0.0825, 0, 0; 90°, -0°, 0°) ⊕ Rz(q3)      │
-│  5 │panda_link5 │    4│panda_link4│SE3(-0.0825, 0.384, 0; -90°, -0°, 0°) ⊕ Rz(q4)│
-│  6 │panda_link6 │    5│panda_link5│SE3(90°, -0°, 0°) ⊕ Rz(q5)                    │
-│  7 │panda_link7 │    6│panda_link6│SE3(0.088, 0, 0; 90°, -0°, 0°) ⊕ Rz(q6)       │
-│  8 │@panda_link8│     │panda_link7│SE3(0, 0, 0.107)                              │
-└────┴────────────┴─────┴───────────┴──────────────────────────────────────────────┘
-
-┌─────┬─────┬────────┬─────┬───────┬─────┬───────┬──────┐
-│name │ q0  │ q1     │ q2  │ q3    │ q4  │ q5    │ q6   │
-├─────┼─────┼────────┼─────┼───────┼─────┼───────┼──────┤
-│  qr │  0° │ -17.2° │  0° │ -126° │  0° │  115° │  45° │
-│  qz │  0° │  0°    │  0° │  0°   │  0° │  0°   │  0°  │
-└─────┴─────┴────────┴─────┴───────┴─────┴───────┴──────┘
-```
+.Representación tabular de la configuración del robot Panda
+image::panda-robot-print.png[align=center]
 
 La descripción se divide en dos partes principales: la configuración de los eslabones y las articulaciones del robot en el árbol de cuerpo rígido, y luego se muestran además dos configuraciones predefinidas de las articulaciones para dos posturas de ejemplo.
 

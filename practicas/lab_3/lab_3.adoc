@@ -1,0 +1,54 @@
+include::../config.adoc[]
+
+= Práctica de Laboratorio N° 3
+
+== Objetivos principales
+
+1. Implementar clases y objetos especiales para la representación gráfica de manipuladores robóticos.
+2. Obtener parámetros para modelado de manipuladores robóticos utilizando el algoritmo de D-H.
+
+== Objetivos secundarios
+
+1. Familiarizarse con el entorno de desarrollo de JupyerLab.
+2. Aprender cómo acceder a la documentación de un paquete desde la línea de comandos de Python.
+3. Inspeccionar el paquete robotics-toolbox para obtener información sobre su funcionamiento.
+4. Desarrollar de manera exitosa los ejercicios propuestos.
+
+== Explorando el toolbox de robótica para Python
+
+=== Introducción
+
+Python es un lenguaje de programación de alto nivel, conocido por su claridad y sencillez. Una de sus varias características destacables es la introspecciónfootnote:[https://es.wikipedia.org/wiki/Introspecci%C3%B3n_de_tipos], que permite a los programas examinar el tipo o las propiedades de un objeto en tiempo de ejecución. Esto significa que un programa Python puede conocer la información sobre sí mismo y modificar su comportamiento en consecuencia.
+
+Llevado a nuestro caso de uso en particular, esto nos permite averiguar sobre la marcha cómo esta compuesto el toolbox, así como también cuales son las funcionalidades disponibles. En esta práctica vamos a hacer un paso rápido por las funciones básicas utilizadas para fines introspectivos para poder averiguar información útil sobre el toolbox.
+
+Dado que esta estrategia puede utilizarse de manera universal con otros módulos, clases y funciones de Python, esto podría resultar de utilidad en otros campos de interés para el alumno.
+
+== Ejercicios
+
+=== Ejercicio 1
+
+Utilizando las clases Link y SerialLink y sus respectivos métodos construya y represente en forma gráfica el manipulador cuyos parámetros de D-H se muestran en la tabla 1. Luego compare su resultado con la figura 1.
+
+
+=== Ejercicio 2
+
+Utilizando las clases Link y SerialLink y sus respectivos métodos construya y represente en forma gráfica el manipulador cuyos parámetros de D-H se muestran en la tabla 2. Luego compare su resultado con la figura 2.
+
+=== Ejercicio 3
+
+Siga las instrucciones:
+
+* Invoque el modelo del manipulador FANUC10L utilizando el comando mdl_fanuc10l.
+* Identifique la clase correspondiente al robot en el workspace y obtenga la lista de parámetros de D-H correspondiente al manipulador.
+* Utilizando el método plot represente el robot en forma gráfica con todas las articulaciones en la posición cero.
+* Experimente con el método teach para interactuar con la representación gráfica.
+
+=== Ejercicio 4
+
+Siga las instrucciones:
+
+* Invoque el modelo del manipulador Cobra600 utilizando el comando mdl_cobra600.
+* Identifique la clase correspondiente al robot en el workspace y obtenga la lista de parámetros de D-H correspondiente al manipulador.
+* Utilizando el método plot represente el robot en forma gráfica con todas las articulaciones en la posición cero.
+* Experimente con el método teach para interactuar con la representación gráfica.

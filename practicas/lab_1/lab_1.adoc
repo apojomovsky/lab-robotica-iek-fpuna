@@ -21,7 +21,7 @@ En este material se va a cubrir lo siguiente:
 
 === Descarga e instalación de Anaconda
 
-Anaconda es una plataforma destinada para facilitar la instalación de dependencias y gestionar entornos de trabajo en Python. Esto nos permite instalar y gestionar diferentes versiones de Python, y a su vez permitir que estas versiones coexistan en un mismo sistema sin generar conflictos en los directorios de instalación, librerías o herramientas como editores de texto, IDEs, etc. Es ideal para nuestro caso de uso ya que nos permite generar entornos de trabajo repetibles incluso para diferentes sistemas operativos. Estas instrucciones van a tener como objetivo principal a usuarios de Windows, pero a menos que se indique lo contrario, deberían ser aplicables para sistemas tipo Linux o MacOS.
+Anaconda es una plataforma ideada para facilitar la instalación de dependencias y gestionar entornos de trabajo en Python. Esto nos permite instalar y gestionar diferentes versiones de Python, y a su vez permitir que estas versiones coexistan en un mismo sistema sin generar conflictos en los directorios de instalación, librerías o herramientas como editores de texto, IDEs, etc. Es ideal para nuestro caso de uso ya que nos permite generar entornos de trabajo repetibles incluso para diferentes sistemas operativos. Estas instrucciones van a tener como objetivo principal a usuarios de Windows, pero a menos que se indique lo contrario, deberían ser aplicables para sistemas tipo Linux o MacOS.
 
 Se puede descargar Anaconda para tu sistema operativo de elección a partir del siguiente link:
 
@@ -62,7 +62,7 @@ Para instalar el toolbox de robótica tenemos que acceder a un terminal del sist
 .Abrir terminal para el entorno
 image::conda-open-terminal.png[align=center]
 
-Esto nos llevará a un terminal CMD de Windows cuyo prompt tendrá la particularidad de estar precedido por el nombre de nuestro environment entre paréntesis. Esto quiere decir que cualquier cambio que hagamos en la instalación de Python actualmente activa, se hará en dicho environment y no a nivel de sistema.
+Esto nos llevará a un terminal CMD de Windows cuyo promptfootnote:[https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt] tendrá la particularidad de estar precedido, entre paréntesis, por el nombre de nuestro environment de Anaconda. Esto se hace para enfatizar y recordar que estamos en un entorno confinado, y que cualquier cambio que hagamos en la instalación de Python en este terminal, se hará solo en dicho entorno y no a nivel de sistema.
 
 ----
 (robotica) PS C:\Users\apojo>

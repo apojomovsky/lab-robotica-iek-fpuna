@@ -24,6 +24,39 @@ Llevado a nuestro caso de uso en particular, esto nos permite averiguar sobre la
 
 Dado que esta estrategia puede utilizarse de manera universal con otros módulos, clases y funciones de Python, esto podría resultar de utilidad en otros campos de interés para el alumno.
 
+=== Uso de la función `help()`
+Al invocarse sobre un módulo, esta función es esencialmente una guía integrada que proporciona información detallada sobre cómo utilizar los diferentes objetos, módulos, funciones, clases y métodos disponibles de un determinado módulo en Python.
+
+La función help se puede aplicar a módulos completos, por ejemplo:
+
+[,python]
+----
+import roboticstoolbox as rtb
+help(rtb)
+----
+
+Imprimirá algo similar a lo siguiente:
+
+----
+Help on package roboticstoolbox:
+
+NAME
+    roboticstoolbox
+
+PACKAGE CONTENTS
+    backends (package)
+    bin (package)
+    blocks (package)
+    examples (package)
+    fknm
+    frne
+    mobile (package)
+    models (package)
+    robot (package)
+    tools (package)
+----
+Tener en cuenta que el contenido esta truncado por brevedad, la salida real de este comando es super extensa, porque contiene la información de ayuda del módulo y todos sus componentes.
+
 == Ejercicios
 
 === Ejercicio 1

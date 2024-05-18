@@ -1,8 +1,11 @@
 :doctype: article
-:figure-caption: Imagen
+:figure-caption: Figura
+:table-caption: Tabla
 :imagesdir: assets
 :note-caption: NOTA
 :rouge-style: monokai
 :source-highlighter: rouge
+:header-image: image::fpuna_logo.png[]
+:title-logo-image: image:fpuna_logo.png[pdfwidth=3.5in,align=center]
 // :toc-title: Tabla de contenidos
 // :toc: auto

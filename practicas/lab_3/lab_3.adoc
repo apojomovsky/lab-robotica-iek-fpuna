@@ -18,16 +18,16 @@ include::../config.adoc[]
 
 === Introducción
 
-Python es un lenguaje de programación de alto nivel, conocido por su claridad y sencillez. Una de sus varias características destacables es la introspecciónfootnote:[https://es.wikipedia.org/wiki/Introspecci%C3%B3n_de_tipos], que permite a los programas examinar el tipo o las propiedades de un objeto en tiempo de ejecución. Esto significa que un programa Python puede conocer la información sobre sí mismo y modificar su comportamiento en consecuencia.
+Python es un lenguaje de programación de alto nivel conocido por su claridad y sencillez. Una de sus varias características destacables es la introspecciónfootnote:[https://es.wikipedia.org/wiki/Introspecci%C3%B3n_de_tipos], que permite a los programas examinar el tipo o las propiedades de un objeto en tiempo de ejecución. Esto significa que un programa Python puede conocer la información sobre sí mismo y modificar su comportamiento en consecuencia.
 
-Llevado a nuestro caso de uso en particular, esto nos permite averiguar sobre la marcha cómo esta compuesto el toolbox, así como también cuales son las funcionalidades disponibles. En esta práctica vamos a hacer un paso rápido por las funciones básicas utilizadas para fines introspectivos para poder averiguar información útil sobre el toolbox.
+Llevado a nuestro caso de uso en particular, si bien le daremos un uso muy acotado, esto nos permite averiguar sobre la marcha cómo esta compuesto el toolbox, así como también cuales son las funcionalidades disponibles. En esta práctica vamos a hacer un paso rápido por las funciones básicas utilizadas para fines introspectivos para poder averiguar información útil sobre el toolbox, para luego pasar a resolver los ejercicios con esta información que acabamos de adquirir.
 
-Dado que esta estrategia puede utilizarse de manera universal con otros módulos, clases y funciones de Python, esto podría resultar de utilidad en otros campos de interés para el alumno.
+Dado que es una estrategia puede utilizarse de manera universal con otros paquetes, clases y funciones de Python, esto podría resultar de utilidad en otros campos de interés para el alumno, no necesariamente relacionados con el toolbox ni la robótica.
 
 === Uso de la función `help()`
-Al invocarse sobre un módulo, esta función es esencialmente una guía integrada que proporciona información detallada sobre cómo utilizar los diferentes objetos, módulos, funciones, clases y métodos disponibles de un determinado módulo en Python.
+Al invocarse sobre un paquete, esta función devuelve una guía integrada que proporciona información detallada sobre cómo utilizar los diferentes objetos, paquetes, funciones, clases y métodos disponibles en el mismo.
 
-La función help se puede aplicar a módulos completos, por ejemplo:
+La función help se puede aplicar a paquetes completos, por ejemplo:
 
 [,python]
 ----
@@ -55,18 +55,109 @@ PACKAGE CONTENTS
     robot (package)
     tools (package)
 ----
-Tener en cuenta que el contenido esta truncado por brevedad, la salida real de este comando es super extensa, porque contiene la información de ayuda del módulo y todos sus componentes.
+Tener en cuenta que el contenido esta truncado por brevedad, la salida real de este comando es mucho más extensa porque contiene _toda_ la información de ayuda de todo el paquete, incluyendo cada uno de sus componentes.
+
+Por este motivo, si bien existe una utilidad inmediata en invocar la función de ayuda para un paquete completo, es usual que uno vaya llamando a la ayuda para las clases y funciones específicas de interés.
+
+En nuestro caso de uso de la práctica de hoy, nos interesa saber sobre los modelos de robots de ejemplo que se encuentran disponibles en el toolbox. El comando de arriba nos dió la información de que existe un sub-paquete llamado `models`, que parece ser lo que necesitamos. Para averiguarlo, invocamos la función de ayuda sobre dicho módulo:
+
+[,python]
+----
+help(rtb.models)
+----
+
+La cual imprimirá lo siguiente:
+
+----
+Help on package roboticstoolbox.models in roboticstoolbox:
+
+NAME
+    roboticstoolbox.models
+
+PACKAGE CONTENTS
+    DH (package)
+    ETS (package)
+    URDF (package)
+    list
+
+FUNCTIONS
+    list(keywords=None, dof=None, type=None, border='thin')
+        Display all robot models in summary form
+        
+        :param keywords: keywords to filter on, defaults to None
+        :type keywords: tuple of str, optional
+        :param dof: number of DoF to filter on, defaults to None
+        :type dof: int, optional
+        :param type: model type "DH", "ETS", "URDF", defaults to all types
+        :type type: str, optional
+        
+        - ``list()`` displays a list of all models provided by the Toolbox.  It
+          lists the name, manufacturer, model type, number of DoF, and keywords.
+        
+        - ``list(type=MT)`` as above, but only displays models of type ``MT``
+          where ``MT`` is one of "DH", "ETS" or "URDF".
+        
+        - ``list(keywords=KW)`` as above, but only displays models that have a
+          keyword in the tuple ``KW``.
+        
+        - ``list(dof=N)`` as above, but only display models that have ``N``
+          degrees of freedom.
+        
+        The filters can be combined
+        
+        - ``list(keywords=KW, dof=N)`` are those models that have a keyword in
+          ``KW`` and have ``N`` degrees of freedom.
+
+DATA
+    __all__ = ['list', 'ETS', 'DH']
+
+FILE
+    c:\users\apojo\anaconda3\envs\robotica\lib\site-packages\roboticstoolbox\models\__init__.py
+----
+
+Ahá, podemos llamar al método `list()`, así sin argumentos y eso nos debería devolver la lista de modelos de robots disponibles en el toolbox. Probemos:
+
+[,python]
+----
+rtb.models.list()
+----
+
+----
+----
 
 == Ejercicios
 
 === Ejercicio 1
 
-Utilizando las clases Link y SerialLink y sus respectivos métodos construya y represente en forma gráfica el manipulador cuyos parámetros de D-H se muestran en la tabla 1. Luego compare su resultado con la figura 1.
+Utilizando las clases _Link_ y _SerialLink_ y sus respectivos métodos construya y represente en forma gráfica el manipulador cuyos parámetros de D-H se muestran en la tabla 1. Luego compare su resultado con la figura 1.
 
+.Robot de 2GDL
+image::ejercicio-1.png[align=center, pdfwidth=50%]
+
+.Configuración de robot de 2GDL
+[.center, cols="5*", options="header"]  
+|===
+^| Articulación ^| θ    ^| d ^| a ^| α
+^| 1            ^| q~1~ ^| 0 ^| 1 ^| 0
+^| 2            ^| q~2~ ^| 0 ^| 1 ^| 0
+|=== 
 
 === Ejercicio 2
 
-Utilizando las clases Link y SerialLink y sus respectivos métodos construya y represente en forma gráfica el manipulador cuyos parámetros de D-H se muestran en la tabla 2. Luego compare su resultado con la figura 2.
+Utilizando las clases _Link_ y _SerialLink_ y sus respectivos métodos construya y represente en forma gráfica el manipulador cuyos parámetros de D-H se muestran en la tabla 2. Luego compare su resultado con la figura 2.
+
+.Robot de 4GDL
+image::ejercicio-2.png[align=center, pdfwidth=50%]
+
+.Configuración de robot de 4GDL
+[.center, cols="6*", options="header"]  
+|===
+^| Articulación ^| θ    ^| d    ^| a ^| α  ^| Σ
+^| 1            ^| q~1~ ^| l~1~ ^| 0 ^| 0  ^| 0
+^| 2            ^| 90   ^| d~2~ ^| 0 ^| 90 ^| 0
+^| 3            ^| 0    ^| d~3~ ^| 0 ^| 0  ^| 0
+^| 4            ^| q~4~ ^| l~4~ ^| 0 ^| 0  ^| 0
+|=== 
 
 === Ejercicio 3
 

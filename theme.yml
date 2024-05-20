@@ -1,3 +1,5 @@
 extends: default
 image:
   caption-align: inherit
+table:
+  caption-align: inherit

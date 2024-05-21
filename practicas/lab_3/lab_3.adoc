@@ -7,123 +7,65 @@ include::../config.adoc[]
 1. Implementar clases y objetos especiales para la representación gráfica de manipuladores robóticos.
 2. Obtener parámetros para modelado de manipuladores robóticos utilizando el algoritmo de D-H.
 
-// == Objetivos secundarios
+== Objetivos secundarios
 
-// 1. Familiarizarse con el entorno de desarrollo de JupyerLab.
-// 2. Aprender cómo acceder a la documentación de un paquete desde la línea de comandos de Python.
-// 3. Inspeccionar el paquete robotics-toolbox para obtener información sobre su funcionamiento.
-// 4. Desarrollar de manera exitosa los ejercicios propuestos.
+1. Aprender sobre las diferentes formas de importación de módulos en Python.
+2. Aprender a utilizar el módulo `teach` del toolbox desde un terminal de Python.
+3. Aprender a generar un plot interactivo de matplotlib en JupyterNotebooks.
 
-// == Explorando el toolbox de robótica para Python
+== Importación de los módulos necesarios para los ejercicios
 
-// === Introducción
+En Python, es necesario importar explícitamente los paquetes que vamos a utilizar. Para nuestros ejercicios, necesitamos el toolbox de robótica y algunos otros módulos estándar. Los paquetes se importan usando la palabra reservada import. A continuación, veremos algunas formas de hacerlo.
 
-// Python es un lenguaje de programación de alto nivel conocido por su claridad y sencillez. Una de sus varias características destacables es la introspecciónfootnote:[https://es.wikipedia.org/wiki/Introspecci%C3%B3n_de_tipos], que permite a los programas examinar el tipo o las propiedades de un objeto en tiempo de ejecución. Esto significa que un programa Python puede conocer la información sobre sí mismo y modificar su comportamiento en consecuencia.
+[,python]
+----
+from roboticstoolbox import * # 1
+from roboticstoolbox import DHLink # 2
+import roboticstoolbox as rtb # 3
+----
 
-// Llevado a nuestro caso de uso en particular, si bien le daremos un uso muy acotado, esto nos permite averiguar sobre la marcha cómo esta compuesto el toolbox, así como también cuales son las funcionalidades disponibles. En esta práctica vamos a hacer un paso rápido por las funciones básicas utilizadas para fines introspectivos para poder averiguar información útil sobre el toolbox, para luego pasar a resolver los ejercicios con esta información que acabamos de adquirir.
+1. Esto significa "importar todo lo que haya en el módulo roboticstoolbox" al entorno. Utilizando el asterisco `*` (wildcard), todas las clases y funciones del módulo se importan en el script y se pueden acceder directamente sin usar el nombre del paquete.
+2. Esto significa "importar solo la clase DHLink del paquete roboticstoolbox", permitiendo un control más fino sobre las importaciones y especificando su origen. La desventaja es que, al usar muchas clases, la sección de importaciones se extiende mucho.
+3. Esto significa "importar todo el módulo roboticstoolbox y asignarle el alias rtb". Es común abreviar los nombres de los módulos para evitar escribir el nombre completo cada vez que se llama a una clase o función del módulo.
 
-// Dado que es una estrategia puede utilizarse de manera universal con otros paquetes, clases y funciones de Python, esto podría resultar de utilidad en otros campos de interés para el alumno, no necesariamente relacionados con el toolbox ni la robótica.
+Cabe destacar que, en los casos 1 y 2, los componentes del módulo se importan al nivel superior del script, permitiendo invocarlos directamente sin necesidad de especificar su origen. Por ejemplo, se puede llamar directamente a `fkine()`. En el caso 3, es necesario utilizar el alias, por ejemplo, `rtb.fkine()`.
 
-// === Uso de la función `help()`
-// Al invocarse sobre un paquete, esta función devuelve una guía integrada que proporciona información detallada sobre cómo utilizar los diferentes objetos, paquetes, funciones, clases y métodos disponibles en el mismo.
+== Uso de la función `teach` en el toolbox
 
-// La función help se puede aplicar a paquetes completos, por ejemplo:
+Se utiliza para interactuar gráficamente con el modelo de un robot a través de un entorno de simulación. Este comando abre una interfaz gráfica donde puedes mover las articulaciones del robot manualmente usando controles deslizantes o _sliders_.
 
-// [,python]
-// ----
-// import roboticstoolbox as rtb
-// help(rtb)
-// ----
+Para nuestro caso de uso, esta interfaz nos va a permitir interactuar y observar cómo el movimiento de cada una de las articulaciones del robot afecta la pose del efector final, proporcionando una forma intuitiva de aprender sobre la configuración y el control del robot.
 
-// Imprimirá algo similar a lo siguiente:
+Lastimosamente esta funcionalidad no esta soportada a través del uso de Jupyter Notebooks y se debe acceder a través de una consola de Python. A continuación se muestran unas instrucciones resumidas.
 
-// ----
-// Help on package roboticstoolbox:
+.Abrir un terminal Python desde Anaconda
+image::abrir-terminal.png[align=center, pdfwidth=80%]
 
-// NAME
-//     roboticstoolbox
+1. Ir a la pestaña de `Environments`.
+2. Click en el ícono verde a la derecha del environment que creamos en la practica anterior.
+3. Click en `Open with Python`.
 
-// PACKAGE CONTENTS
-//     backends (package)
-//     bin (package)
-//     blocks (package)
-//     examples (package)
-//     fknm
-//     frne
-//     mobile (package)
-//     models (package)
-//     robot (package)
-//     tools (package)
-// ----
-// Tener en cuenta que el contenido esta truncado por brevedad, la salida real de este comando es mucho más extensa porque contiene _toda_ la información de ayuda de todo el paquete, incluyendo cada uno de sus componentes.
+Esto nos va a llevar a un terminal de Python listo para usar. La terminal vacía debería verse parecida a la figura 2.
 
-// Por este motivo, si bien existe una utilidad inmediata en invocar la función de ayuda para un paquete completo, es usual que uno vaya llamando a la ayuda para las clases y funciones específicas de interés.
+Hay que tener en cuenta que hay que realizar todos los `import` necesarios para que el `roboticstoolbox` se encuentre disponible en el entorno. Para esto, procedemos a escribir, línea por línea los siguientes imports:
 
-// En nuestro caso de uso de la práctica de hoy, nos interesa saber sobre los modelos de robots de ejemplo que se encuentran disponibles en el toolbox. El comando de arriba nos dió la información de que existe un sub-paquete llamado `models`, que parece ser lo que necesitamos. Para averiguarlo, invocamos la función de ayuda sobre dicho módulo:
+[,python]
+----
+import roboticstoolbox as rtb # 1
+import numpy as np # 2
+puma = rtb.models.DH.Puma560() # 3
+estado_inicial = np.zeros(puma.n) # 4
+puma.teach(estado_inicial) # 5
+----
 
-// [,python]
-// ----
-// help(rtb.models)
-// ----
+1. Importar `roboticstoolbox` con el alias `rtb`.
+2. Importar `numpy` con el alias `np`.
+3. Crear una instancia del robot Puma560 y llamar a la variable `puma`.
+4. Crear una lista inicializada en cero, es decir, que todos sus elementos contentan el número cero, y con cantidad de elementos igual a `puma.n`, que es la cantidad de articulaciones que posee el robot. En este ejemplo, obtendremos una lista de 6 ceros: `[0, 0, 0, 0, 0, 0]`.
+5. Invocar el método `teach` pasándole como argumento el estado inicial de las articulaciones, que nosotros convenientemente inicializamos en cero.
 
-// La cual imprimirá lo siguiente:
-
-// ----
-// Help on package roboticstoolbox.models in roboticstoolbox:
-
-// NAME
-//     roboticstoolbox.models
-
-// PACKAGE CONTENTS
-//     DH (package)
-//     ETS (package)
-//     URDF (package)
-//     list
-
-// FUNCTIONS
-//     list(keywords=None, dof=None, type=None, border='thin')
-//         Display all robot models in summary form
-        
-//         :param keywords: keywords to filter on, defaults to None
-//         :type keywords: tuple of str, optional
-//         :param dof: number of DoF to filter on, defaults to None
-//         :type dof: int, optional
-//         :param type: model type "DH", "ETS", "URDF", defaults to all types
-//         :type type: str, optional
-        
-//         - ``list()`` displays a list of all models provided by the Toolbox.  It
-//           lists the name, manufacturer, model type, number of DoF, and keywords.
-        
-//         - ``list(type=MT)`` as above, but only displays models of type ``MT``
-//           where ``MT`` is one of "DH", "ETS" or "URDF".
-        
-//         - ``list(keywords=KW)`` as above, but only displays models that have a
-//           keyword in the tuple ``KW``.
-        
-//         - ``list(dof=N)`` as above, but only display models that have ``N``
-//           degrees of freedom.
-        
-//         The filters can be combined
-        
-//         - ``list(keywords=KW, dof=N)`` are those models that have a keyword in
-//           ``KW`` and have ``N`` degrees of freedom.
-
-// DATA
-//     __all__ = ['list', 'ETS', 'DH']
-
-// FILE
-//     c:\users\apojo\anaconda3\envs\robotica\lib\site-packages\roboticstoolbox\models\__init__.py
-// ----
-
-// Ahá, podemos llamar al método `list()`, así sin argumentos y eso nos debería devolver la lista de modelos de robots disponibles en el toolbox. Probemos:
-
-// [,python]
-// ----
-// rtb.models.list()
-// ----
-
-// ----
-// ----
+.Abrir un terminal Python desde Anaconda
+image::python-terminal.png[align=center, pdfwidth=80%]
 
 == Ejercicios
 
